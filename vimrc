@@ -114,7 +114,7 @@ autocmd FileType ruby set expandtab ts=2 sts=2 sw=2
 call pathogen#infect()
 
 "Launch NERDtree when you are opening current directory
-autocmd vimenter * if argc() == 0 | NERDTree | endif
+"autocmd vimenter * if argc() == 0 | NERDTree | endif
 
 "Key map CtrlP to ctrl-p 
 let g:ctrlp_map = '<c-p>'
