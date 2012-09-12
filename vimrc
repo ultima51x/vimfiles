@@ -80,6 +80,9 @@ highlight ColorColumn ctermbg=darkgrey
 
 "autoindent smartindent not set because it seems it's done automatically
 
+autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+
 "For normal stuff
 autocmd FileType mail,human set formatoptions+=t ts=8 sw=8 noexpandtab
 
@@ -91,9 +94,10 @@ autocmd FileType perl set noexpandtab ts=4 sts=4 sw=4
 
 "For css [4 space tab]
 autocmd FileType css set noexpandtab ts=4 sts=4 sw=4 
+autocmd BufRead,BufNewFile *.scss set filetype=css
 
 "For html/css [2 space expandtab] 
-autocmd FileType html,xml set expandtab ts=2 sts=2 sw=2
+autocmd FileType html,xml set noexpandtab ts=4 sts=4 sw=4
 
 "For c-style [4 space tab]
 autocmd FileType c,cpp,java set noexpandtab ts=4 sts=4 sw=4
@@ -109,6 +113,12 @@ autocmd FileType python set expandtab ts=4 sts=4 sw=4
 
 "For ruby
 autocmd FileType ruby set expandtab ts=2 sts=2 sw=2 
+autocmd BufRead,BufNewFile *.html.erb set filetype=ruby
+autocmd BufRead,BufNewFile *.scss.erb set filetype=ruby
+autocmd BufRead,BufNewFile *.js.erb set filetype=ruby
+
+"Strip whitespace
+autocmd FileType php,perl,css,html,c,cpp,java,bash,sh,javascript,python,ruby autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 "Launch pathogen
 call pathogen#infect()
