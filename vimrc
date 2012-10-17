@@ -1,6 +1,5 @@
 " .vimrc
 " David Hwang
-" 08/18/2012
 
 "Additional stuff for Windows vim
 if has("unix")
@@ -113,8 +112,9 @@ autocmd FileType python set expandtab ts=4 sts=4 sw=4
 
 "For ruby
 autocmd FileType ruby set expandtab ts=2 sts=2 sw=2 
-autocmd BufRead,BufNewFile *.html.erb set filetype=ruby
+autocmd BufRead,BufNewFile *.css.erb set filetype=ruby
 autocmd BufRead,BufNewFile *.scss.erb set filetype=ruby
+autocmd BufRead,BufNewFile *.html.erb set filetype=ruby
 autocmd BufRead,BufNewFile *.js.erb set filetype=ruby
 
 "Strip whitespace
