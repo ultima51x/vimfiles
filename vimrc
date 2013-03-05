@@ -81,7 +81,6 @@ highlight ColorColumn ctermbg=darkgrey
 
 autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> :%s/\s\+$//e
 
-
 "For normal stuff
 autocmd FileType mail,human set formatoptions+=t ts=8 sw=8 noexpandtab
 
@@ -122,9 +121,6 @@ autocmd FileType php,perl,css,html,c,cpp,java,bash,sh,javascript,python,ruby aut
 
 "Launch pathogen
 call pathogen#infect()
-
-"Launch NERDtree when you are opening current directory
-"autocmd vimenter * if argc() == 0 | NERDTree | endif
 
 "Key map CtrlP to ctrl-p 
 let g:ctrlp_map = '<c-p>'
