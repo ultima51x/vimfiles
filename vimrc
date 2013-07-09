@@ -65,7 +65,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-set history=100	"history
+set history=5000	"history
 set incsearch   "search as you type
 
 filetype on     "recognize filetype
@@ -73,6 +73,9 @@ filetype indent on
 filetype plugin on
 
 set guioptions-=T
+
+"vimgrep
+set grepprg=grep\ -nrI\ --exclude-dir=.vim\ --exclude-dir=target\ --exclude-dir=tmp\ --exclude-dir=log\ --exclude="*.min.js"\ --exclude="*.log"\ --exclude="tags"\ $*\ /dev/null
 
 set cc=81
 highlight ColorColumn ctermbg=darkgrey
