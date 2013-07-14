@@ -125,11 +125,12 @@ autocmd FileType php,perl,css,html,c,cpp,java,bash,sh,javascript,python,ruby aut
 "Launch pathogen
 call pathogen#infect()
 
+"CtrlP
 "Key map CtrlP to ctrl-p 
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-"let g:ctrlp_extensions = ['tag']
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_extensions = ['tag']
 let g:ctrlp_custom_ignore = {
-	\ 'dir': '\.git$\|\.hg$\|\.svn$',
+	\ 'dir': '\.git$\|\.hg$\|\.svn$\|\log$',
 	\ 'file': '\.exe$\|\.so$\|\.dll$',
 	\ }
