@@ -134,3 +134,5 @@ let g:ctrlp_custom_ignore = {
 	\ 'dir': '\.git$\|\.hg$\|\.svn$\|\log$',
 	\ 'file': '\.exe$\|\.so$\|\.dll$',
 	\ }
+
+nmap <F8> :TagbarToggle<CR>
