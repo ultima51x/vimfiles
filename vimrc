@@ -38,6 +38,9 @@ endfunction
 "primary file format is unix, dos, then mac
 set fileformats=unix,dos,mac
 
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
 "syntax highlighting if it can be done
 if has('syntax') && (&t_Co > 2)
 	syntax on
@@ -127,9 +130,9 @@ call pathogen#infect()
 
 "CtrlP
 "Key map CtrlP to ctrl-p 
+let g:ctrlp_working_path_mode = 0
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_extensions = ['tag']
 let g:ctrlp_custom_ignore = {
 	\ 'dir': '\.git$\|\.hg$\|\.svn$\|\log$',
 	\ 'file': '\.exe$\|\.so$\|\.dll$',
