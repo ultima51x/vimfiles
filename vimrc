@@ -63,6 +63,9 @@ set formatoptions-=t	"do not textwrap
 "allows backspace over indents, eols
 set backspace=indent,eol,start
 
+"check dir of current file first then go back; check current working directory
+set tags=./tags;
+
 "don't write backups
 set nobackup
 set nowritebackup
@@ -121,6 +124,7 @@ autocmd BufRead,BufNewFile *.css.erb set filetype=ruby
 autocmd BufRead,BufNewFile *.scss.erb set filetype=ruby
 autocmd BufRead,BufNewFile *.html.erb set filetype=ruby
 autocmd BufRead,BufNewFile *.js.erb set filetype=ruby
+autocmd BufRead,BufNewFile *.yaml set filetype=ruby
 
 "Strip whitespace
 autocmd FileType php,perl,css,html,c,cpp,java,bash,sh,javascript,python,ruby autocmd BufWritePre <buffer> :%s/\s\+$//e
@@ -131,6 +135,9 @@ call pathogen#infect()
 "CtrlP
 "Key map CtrlP to ctrl-p 
 let g:ctrlp_working_path_mode = 0
+let g:ctrlp_by_filename = 1
+let g:ctrlp_match_window = 'max:20'
+let g:ctrlp_switch_buffer = 0
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_custom_ignore = {
