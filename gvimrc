@@ -3,7 +3,7 @@
 " 08/18/2012
 
 " using the colorscheme I like
-colorscheme blacksea
+colorscheme wombat
 
 " make the color column grey in guivim
 highlight ColorColumn guibg=darkgrey
@@ -14,6 +14,7 @@ if has("gui_running")
 		set guifont=Monospace 10,DejaVu\ Sans\ Mono\ 10
 	elseif has("gui_macvim")
 		set guifont=Monaco:h12,Menlo\ Regular:h12
+		set transparency=5
 	elseif has("gui_win32")
 		set guifont=Consolas:h11,DejaVu\ Sans\ Mono:h10
 	elseif has("gui_kde")
