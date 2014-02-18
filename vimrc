@@ -125,6 +125,7 @@ autocmd BufRead,BufNewFile *.scss.erb set filetype=ruby
 autocmd BufRead,BufNewFile *.html.erb set filetype=ruby
 autocmd BufRead,BufNewFile *.js.erb set filetype=ruby
 autocmd BufRead,BufNewFile *.yaml set filetype=ruby
+autocmd BufRead,BufNewFile *.yml set filetype=ruby
 
 "Strip whitespace
 autocmd FileType php,perl,css,html,c,cpp,java,bash,sh,javascript,python,ruby autocmd BufWritePre <buffer> :%s/\s\+$//e
@@ -145,4 +146,7 @@ let g:ctrlp_custom_ignore = {
 	\ 'file': '\.exe$\|\.so$\|\.dll$',
 	\ }
 
-nmap <F8> :TagbarToggle<CR>
+nnoremap <leader>t :CtrlPTag<cr>
+nnoremap <leader>p :CtrlP<cr>
+nnoremap <leader>b :TagbarToggle<cr>
+nnoremap <leader>n :NERDTreeToggle<cr>
