@@ -16,7 +16,7 @@ if has("gui_running")
 		set guifont=Monaco:h12,Menlo\ Regular:h12
 		set transparency=5
 	elseif has("gui_win32")
-		set guifont=Consolas:h11,DejaVu\ Sans\ Mono:h10
+		set guifont=Consolas:h10:b
 	elseif has("gui_kde")
 	elseif has("x11")
 	endif
