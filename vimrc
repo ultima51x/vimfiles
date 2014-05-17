@@ -135,12 +135,14 @@ call pathogen#infect()
 
 "CtrlP
 "Key map CtrlP to ctrl-p 
+let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
+                          \ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_by_filename = 1
 let g:ctrlp_match_window = 'max:20'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = {
 	\ 'dir': '\.git$\|\.hg$\|\.svn$\|\log$',
 	\ 'file': '\.exe$\|\.so$\|\.dll$',
