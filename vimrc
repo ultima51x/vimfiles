@@ -81,7 +81,7 @@ filetype plugin on
 set guioptions-=T
 
 "vimgrep
-set grepprg=grep\ -nrI\ --exclude-dir=.vim\ --exclude-dir=target\ --exclude-dir=tmp\ --exclude-dir=log\ --exclude="*.min.js"\ --exclude="*.log"\ --exclude="tags"\ $*\ /dev/null
+set grepprg=grep\ -nrI\ --exclude-dir=.vim\ --exclude-dir=.git\ --exclude-dir=target\ --exclude-dir=tmp\ --exclude-dir=log\ --exclude-dir=public/assets\ --exclude=*.min.js\ --exclude=*.log\ --exclude=tags\ $*\ /dev/null
 
 set cc=81
 highlight ColorColumn ctermbg=darkgrey
@@ -130,8 +130,13 @@ autocmd BufRead,BufNewFile *.yml set filetype=ruby
 "Strip whitespace
 autocmd FileType php,perl,css,html,c,cpp,java,bash,sh,javascript,python,ruby autocmd BufWritePre <buffer> :%s/\s\+$//e
 
-"Launch pathogen
+"pathogen
 call pathogen#infect()
+
+"netrw
+let g:netrw_alto=1
+let g:netrw_altv=1
+let g:netrw_liststyle=3
 
 "CtrlP
 "Key map CtrlP to ctrl-p 
@@ -139,6 +144,7 @@ let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
                           \ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_by_filename = 1
+let g:ctrlp_regexp = 1
 let g:ctrlp_match_window = 'max:20'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_map = '<c-p>'
@@ -148,7 +154,12 @@ let g:ctrlp_custom_ignore = {
 	\ 'file': '\.exe$\|\.so$\|\.dll$',
 	\ }
 
+"Leader mappings
 nnoremap <leader>t :CtrlPTag<cr>
 nnoremap <leader>p :CtrlP<cr>
 nnoremap <leader>b :TagbarToggle<cr>
-nnoremap <leader>n :NERDTreeToggle<cr>
+nnoremap <leader>e :Ex<cr>
+nnoremap <leader>q :copen<cr>
+
+"%% auto expands to the path of the current folder
+cnoremap <expr> %% getcmdtype() == ":" ? expand('%:h').'/' : '%%'
