@@ -1,4 +1,4 @@
-" .vimrc
+  " .vimrc
 " David Hwang
 
 "Additional stuff for Windows vim
@@ -86,49 +86,20 @@ set grepprg=grep\ -nrI\ --exclude-dir=.vim\ --exclude-dir=.git\ --exclude-dir=ta
 set cc=81
 highlight ColorColumn ctermbg=darkgrey
 
-"autoindent smartindent not set because it seems it's done automatically
+"[Normal tabbing]
+autocmd FileType human,mail set formatoptions+=t ts=8 sw=8 noexpandtab
 
-autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> :%s/\s\+$//e
+"[4 space hard tab]
+autocmd FileType bash,c,cpp,java,javascript,perl,sh set noexpandtab ts=4 sts=4 sw=4
 
-"For normal stuff
-autocmd FileType mail,human set formatoptions+=t ts=8 sw=8 noexpandtab
+"[4 space soft tab]
+autocmd FileType php,python set expandtab sw=4 sts=4 ts=4
 
-"For php TODO
-autocmd FileType php set expandtab sw=4 sts=4 ts=4
-
-"For perl [4 space tab] TODO test
-autocmd FileType perl set noexpandtab ts=4 sts=4 sw=4
-
-"For css [4 space tab]
-autocmd FileType css set noexpandtab ts=4 sts=4 sw=4 
-autocmd BufRead,BufNewFile *.scss set filetype=css
-
-"For html/css [2 space expandtab] 
-autocmd FileType html,xml set noexpandtab ts=4 sts=4 sw=4
-
-"For c-style [4 space tab]
-autocmd FileType c,cpp,java set noexpandtab ts=4 sts=4 sw=4
-
-"For bash [4 space tab]
-autocmd FileType bash,sh set noexpandtab ts=4 sts=4 sw=4
-
-"For javascript [4 space tab] TODO
-autocmd FileType javascript set noexpandtab ts=4 sts=4 sw=4
-
-"For python
-autocmd FileType python set expandtab ts=4 sts=4 sw=4
-
-"For ruby
-autocmd FileType ruby set expandtab ts=2 sts=2 sw=2 
-autocmd BufRead,BufNewFile *.css.erb set filetype=ruby
-autocmd BufRead,BufNewFile *.scss.erb set filetype=ruby
-autocmd BufRead,BufNewFile *.html.erb set filetype=ruby
-autocmd BufRead,BufNewFile *.js.erb set filetype=ruby
-autocmd BufRead,BufNewFile *.yaml set filetype=ruby
-autocmd BufRead,BufNewFile *.yml set filetype=ruby
+"[2 space soft tab]
+autocmd FileType css,eruby,html,ruby,sass,scss,xml,yaml set expandtab ts=2 sts=2 sw=2 
 
 "Strip whitespace
-autocmd FileType php,perl,css,html,c,cpp,java,bash,sh,javascript,python,ruby autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType bash,c,cpp,java,javascript,perl,sh,php,python,css,eruby,html,ruby,sass,scss,xml,yaml autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 "pathogen
 call pathogen#infect()
@@ -143,7 +114,7 @@ let g:netrw_liststyle=3
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
                           \ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_by_filename = 1
+let g:ctrlp_by_filename = 0
 let g:ctrlp_regexp = 1
 let g:ctrlp_match_window = 'max:20'
 let g:ctrlp_switch_buffer = 0
