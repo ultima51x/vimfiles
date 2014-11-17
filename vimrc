@@ -126,11 +126,15 @@ let g:ctrlp_custom_ignore = {
 	\ }
 
 "Leader mappings
-nnoremap <leader>t :CtrlPTag<cr>
-nnoremap <leader>p :CtrlP<cr>
 nnoremap <leader>b :TagbarToggle<cr>
 nnoremap <leader>e :Ex<cr>
+nnoremap <leader>m :CtrlPMRU<cr>
+nnoremap <leader>p :CtrlP<cr>
+nnoremap <leader>t :CtrlPTag<cr>
 nnoremap <leader>q :copen<cr>
 
 "%% auto expands to the path of the current folder
 cnoremap <expr> %% getcmdtype() == ":" ? expand('%:h').'/' : '%%'
+
+"use silver searcher (ag) for ack.vim
+let g:ackprg = 'ag --nogroup --nocolor --column'
