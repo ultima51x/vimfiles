@@ -74,6 +74,10 @@ set noswapfile
 set history=5000	"history
 set incsearch   "search as you type
 
+"fileformats to show
+set ff=unix
+set fileformats=unix,dos
+
 filetype on     "recognize filetype
 filetype indent on
 filetype plugin on
