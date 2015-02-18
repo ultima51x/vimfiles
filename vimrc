@@ -141,4 +141,6 @@ nnoremap <leader>q :copen<cr>
 cnoremap <expr> %% getcmdtype() == ":" ? expand('%:h').'/' : '%%'
 
 "use silver searcher (ag) for ack.vim
-let g:ackprg = 'ag --nogroup --nocolor --column'
+if executable('ag')
+	let g:ackprg = 'ag --vimgrep'
+endif
