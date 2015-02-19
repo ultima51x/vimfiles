@@ -140,7 +140,3 @@ nnoremap <leader>q :copen<cr>
 "%% auto expands to the path of the current folder
 cnoremap <expr> %% getcmdtype() == ":" ? expand('%:h').'/' : '%%'
 
-"use silver searcher (ag) for ack.vim
-if executable('ag')
-	let g:ackprg = 'ag --vimgrep'
-endif
