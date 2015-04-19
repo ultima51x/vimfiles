@@ -22,3 +22,6 @@
 [submodule "bundle/ag.vim"]
 	path = bundle/ag.vim
 	url = git@github.com:rking/ag.vim.git
+[submodule "bundle/vim-vinegar"]
+	path = bundle/vim-vinegar
+	url = git://github.com/tpope/vim-vinegar.git
