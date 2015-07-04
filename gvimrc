@@ -21,3 +21,5 @@ if has("gui_running")
 	elseif has("x11")
 	endif
 endif
+
+let $PS1="$ "

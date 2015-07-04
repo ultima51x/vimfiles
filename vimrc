@@ -100,7 +100,8 @@ autocmd FileType bash,c,cpp,java,javascript,perl,sh set noexpandtab ts=4 sts=4 s
 autocmd FileType php,python set expandtab sw=4 sts=4 ts=4
 
 "[2 space soft tab]
-autocmd FileType css,eruby,html,ruby,sass,scss,xml,yaml set expandtab ts=2 sts=2 sw=2 
+autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+autocmd FileType css,eruby,html,ruby,sass,scss,xml,yaml,haml,coffee set expandtab ts=2 sts=2 sw=2 
 
 "Strip whitespace
 autocmd FileType bash,c,cpp,java,javascript,perl,sh,php,python,css,eruby,html,ruby,sass,scss,xml,yaml autocmd BufWritePre <buffer> :%s/\s\+$//e
