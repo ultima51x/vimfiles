@@ -134,7 +134,7 @@ let g:ctrlp_custom_ignore = {
 	\ }
 
 "Leader mappings
-nnoremap <leader>e :Ex<cr>
+nnoremap <leader>e :Vex<cr>
 nnoremap <leader>g :Gblame<cr>
 nnoremap <leader>p :CtrlP<cr>
 nnoremap <leader>q :copen<cr>
