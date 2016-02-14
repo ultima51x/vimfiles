@@ -60,14 +60,13 @@ set incsearch   		"search as you type
 set laststatus=2 		"always show status line (needed for airline)
 set mouse=a     		"enable mouse for all modes
 set nobackup			"no backups
-set noerrorbells		"no errorbells
+set noerrorbells vb t_vb=	"no errorbells
 set number
 set ruler       		"show line status at bottom
 set showcmd     		"show partially typed commands
 set showmatch   		"show matching braces
 set showmode    		"show mode at the bottom
 set tags=./tags;
-set visualbell t_vb=		"avoid the visual bell
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*\\tmp\\*,*.exe
 set wildmode=list:longest,full  "command line completion
 

@@ -5,7 +5,10 @@
 colorscheme wombat
 
 " Remove toolbar
-set guioptions-=T
+set guioptions-=T	" remove toolbar
+set visualbell t_vb=	" avoid the visual bell
+
+
 
 " make the color column grey in guivim
 highlight ColorColumn guibg=darkgrey
@@ -18,7 +21,7 @@ if has("gui_running")
 		set guifont=Monaco:h12,Menlo\ Regular:h12
 		set transparency=5
 	elseif has("gui_win32")
-		set guifont=Consolas:h10:b
+		set guifont=Consolas:h11
 	elseif has("gui_kde")
 	elseif has("x11")
 	endif
