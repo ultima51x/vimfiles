@@ -74,29 +74,21 @@ set wildmode=list:longest,full  "command line completion
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 """""""""""""""""""" LANGUAGE SPECIFIC TAB BEHAVIOR """"""""""""""""""""""""""""
-function Set2SpaceHardTab()
-	setlocal expandtab ts=2 sts=2 sw=2
-endfunction
-
-" 4 space hard tab
-function Set4SpaceHardTab()
-	setlocal noexpandtab ts=4 sts=4 sw=4
-endfunction
-
-autocmd FileType bash,c,cpp,java,javascript,perl,sh call Set4SpaceHardTab() call StripTrailingWhiteSpace()
-
-" 4 space soft tab
-function Set4SpaceSoftTab()
-	setlocal expandtab sw=4 sts=4 ts=4
-endfunction
-autocmd FileType markdown,php,python call Set4SpaceSoftTab() call StripTrailingWhiteSpace()
-
-" 2 space soft tab
-function StripTrailingWhitespace()
+function StripTrailingWhiteSpace()
 	autocmd BufWritePre <buffer> :%s/\s\+$//e
 endfunction
 
-autocmd FileType css,eruby,haml,html,ruby,sass,scss,xml,yaml call Set2SpaceHardTab() call StripTrailingWhiteSpace()
+" 4 space hard tab
+autocmd FileType bash,c,cpp,java,javascript,perl,sh setlocal noexpandtab ts=4 sts=4 sw=4
+autocmd FileType bash,c,cpp,java,javascript,perl,sh call StripTrailingWhiteSpace()
+
+" 4 space soft tab
+autocmd FileType markdown,php,python setlocal expandtab sw=4 sts=4 ts=4
+autocmd FileType markdown,php,python call StripTrailingWhiteSpace()
+
+" 2 space soft tab
+autocmd FileType css,eruby,haml,html,ruby,sass,scss,xml,yaml setlocal expandtab ts=2 sts=2 sw=2 
+autocmd FileType css,eruby,haml,html,ruby,sass,scss,xml,yaml call StripTrailingWhiteSpace()
 
 """""""""""""""""""" PLUGINS """""""""""""""""""""""""""""""""""""""""""""""""""
 "CtrlP
