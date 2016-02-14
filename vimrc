@@ -1,19 +1,7 @@
 " .vimrc
 " David Hwang
 
-"pathogen
-execute pathogen#infect()
-
-"Additional stuff for Windows vim
-if has("unix")
-	set nocompatible
-else
-	set nocompatible
-	source $VIMRUNTIME/vimrc_example.vim
-	source $VIMRUNTIME/mswin.vim
-	behave mswin
-	set diffexpr=MyDiff()
-endif
+"""""""""""""""""""" SYSTEM SPECIFIC """""""""""""""""""""""""""""""""""""""""""
 function MyDiff()
 	let opt = '-a --binary '
 	if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
@@ -38,84 +26,81 @@ function MyDiff()
 	silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
-"primary file format is unix, dos, then mac
-set fileformats=unix,dos,mac
-
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-
-"syntax highlighting if it can be done
+if has("win32")
+	source $VIMRUNTIME/vimrc_example.vim
+	source $VIMRUNTIME/mswin.vim
+	behave mswin
+	set diffexpr=MyDiff()
+endif
 if has('syntax') && (&t_Co > 2)
 	syntax on
 endif
 
-set mouse=a     	"enable mouse
-set visualbell t_vb=
-set noerrorbells	"no errorbells
-set showmode    "show mode at the bottom
-set showcmd     "show partially typed commands
-set ruler       "show line status at bottom
-set number      "show line numbers
-set showmatch   "show matching braces
-set hlsearch	"highlights good
-set laststatus=2 "for airline
+"""""""""""""""""""" COMMANDS """"""""""""""""""""""""""""""""""""""""""""""""""
+"%% auto expands to the path of the current folder
+cnoremap <expr> %% getcmdtype() == ":" ? expand('%:h').'/' : '%%'
 
-set wildmode=list:longest,full  "command line completion
-
-set formatoptions-=t	"do not textwrap
-
-"allows backspace over indents, eols
-set backspace=indent,eol,start
-
-"check dir of current file first then go back; check current working directory
-set tags=./tags;
-
-"don't write backups
-set nobackup
-set nowritebackup
-set noswapfile
-
-set history=5000	"history
-set incsearch   "search as you type
-
-"fileformats to show
-set ff=unix
-set fileformats=unix,dos
+execute pathogen#infect()
 
 filetype on     "recognize filetype
 filetype indent on
 filetype plugin on
 
-set guioptions-=T
-
-"vimgrep
-set grepprg=grep\ -nrI\ --exclude-dir=.vim\ --exclude-dir=.git\ --exclude-dir=target\ --exclude-dir=tmp\ --exclude-dir=log\ --exclude-dir=public/assets\ --exclude=*.min.js\ --exclude=*.log\ --exclude=tags\ $*\ /dev/null
-
-set cc=81
 highlight ColorColumn ctermbg=darkgrey
 
-"file-extension
+"""""""""""""""""""" SETTINGS """"""""""""""""""""""""""""""""""""""""""""""""""
+set backspace=indent,eol,start	"allows backspace over indents/eol
+set colorcolumn=81		"number of lines to use for highlight
+set fileformats=unix,dos,mac	"fileformats to try to read when opening file
+set formatoptions-=t		"do not auto-wrap text using textwidth
+set grepprg=grep\ -nrI\ --exclude-dir=.vim\ --exclude-dir=.git\ --exclude-dir=target\ --exclude-dir=tmp\ --exclude-dir=log\ --exclude-dir=public/assets\ --exclude=*.min.js\ --exclude=*.log\ --exclude=tags\ $*\ /dev/null	"vimgrep settings
+set history=5000		"history
+set hlsearch			"highlights search
+set incsearch   		"search as you type
+set laststatus=2 		"always show status line (needed for airline)
+set mouse=a     		"enable mouse for all modes
+set nobackup			"no backups
+set noerrorbells		"no errorbells
+set number
+set ruler       		"show line status at bottom
+set showcmd     		"show partially typed commands
+set showmatch   		"show matching braces
+set showmode    		"show mode at the bottom
+set tags=./tags;
+set visualbell t_vb=		"avoid the visual bell
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*\\tmp\\*,*.exe
+set wildmode=list:longest,full  "command line completion
+
+"""""""""""""""""""" FILE EXTENSIONS """""""""""""""""""""""""""""""""""""""""""
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-"[4 space hard tab]
-autocmd FileType bash,c,cpp,java,javascript,perl,sh set noexpandtab ts=4 sts=4 sw=4
+"""""""""""""""""""" LANGUAGE SPECIFIC TAB BEHAVIOR """"""""""""""""""""""""""""
+function Set2SpaceHardTab()
+	setlocal expandtab ts=2 sts=2 sw=2
+endfunction
 
-"[4 space soft tab]
-autocmd FileType php,python set expandtab sw=4 sts=4 ts=4
+" 4 space hard tab
+function Set4SpaceHardTab()
+	setlocal noexpandtab ts=4 sts=4 sw=4
+endfunction
 
-"[2 space soft tab]
-autocmd FileType css,eruby,html,ruby,sass,scss,xml,yaml,haml,coffee set expandtab ts=2 sts=2 sw=2
+autocmd FileType bash,c,cpp,java,javascript,perl,sh call Set4SpaceHardTab() call StripTrailingWhiteSpace()
 
-"Strip whitespace
-autocmd FileType bash,c,cpp,java,javascript,perl,sh,php,python,css,eruby,html,ruby,sass,scss,vim,xml,yaml autocmd BufWritePre <buffer> :%s/\s\+$//e
+" 4 space soft tab
+function Set4SpaceSoftTab()
+	setlocal expandtab sw=4 sts=4 ts=4
+endfunction
+autocmd FileType markdown,php,python call Set4SpaceSoftTab() call StripTrailingWhiteSpace()
 
-"netrw
-let g:netrw_alto=1
-let g:netrw_altv=1
-let g:netrw_liststyle=3
+" 2 space soft tab
+function StripTrailingWhitespace()
+	autocmd BufWritePre <buffer> :%s/\s\+$//e
+endfunction
 
+autocmd FileType css,eruby,haml,html,ruby,sass,scss,xml,yaml call Set2SpaceHardTab() call StripTrailingWhiteSpace()
+
+"""""""""""""""""""" PLUGINS """""""""""""""""""""""""""""""""""""""""""""""""""
 "CtrlP
-"Key map CtrlP to ctrl-p
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
 			\ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
 let g:ctrlp_working_path_mode = 0
@@ -130,17 +115,24 @@ let g:ctrlp_custom_ignore = {
 			\ 'file': '\.exe$\|\.so$\|\.dll$',
 			\ }
 
+"markdown
+let g:markdown_fenced_languages = ['bash=sh', 'html', 'java', 'javascript', 'python', 'ruby']
+
+"netrw
+let g:netrw_alto=1
+let g:netrw_altv=1
+let g:netrw_liststyle=3
+
 "syntastic - these were beginner recommended settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-"Leader mappings
+"""""""""""""""""""" LEADER """"""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>e :Vex<cr>
 nnoremap <leader>g :Gblame<cr>
 nnoremap <leader>p :CtrlP<cr>
@@ -148,8 +140,3 @@ nnoremap <leader>q :copen<cr>
 nnoremap <leader>r :CtrlPMRU<cr>
 nnoremap <leader>t :CtrlPTag<cr>
 
-"%% auto expands to the path of the current folder
-cnoremap <expr> %% getcmdtype() == ":" ? expand('%:h').'/' : '%%'
-
-"markdown
-let g:markdown_fenced_languages = ['bash=sh', 'html', 'java', 'javascript', 'python', 'ruby']

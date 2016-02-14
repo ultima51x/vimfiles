@@ -1,9 +1,11 @@
 " .gvimrc
 " David Hwang
-" 08/18/2012
 
 " using the colorscheme I like
 colorscheme wombat
+
+" Remove toolbar
+set guioptions-=T
 
 " make the color column grey in guivim
 highlight ColorColumn guibg=darkgrey
