@@ -1,6 +1,9 @@
   " .vimrc
 " David Hwang
 
+"pathogen
+execute pathogen#infect()
+
 "Additional stuff for Windows vim
 if has("unix")
 	set nocompatible
@@ -55,6 +58,7 @@ set ruler       "show line status at bottom
 set number      "show line numbers
 set showmatch   "show matching braces
 set hlsearch	"highlights good
+set laststatus=2 "for airline
 
 set wildmode=list:longest,full  "command line completion
 
@@ -90,8 +94,11 @@ set grepprg=grep\ -nrI\ --exclude-dir=.vim\ --exclude-dir=.git\ --exclude-dir=ta
 set cc=81
 highlight ColorColumn ctermbg=darkgrey
 
+"file-extension
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
 "[Normal tabbing]
-autocmd FileType human,mail set formatoptions+=t ts=8 sw=8 noexpandtab
+autocmd FileType human,mail,ghmarkdown set formatoptions+=t ts=8 sw=8 noexpandtab
 
 "[4 space hard tab]
 autocmd FileType bash,c,cpp,java,javascript,perl,sh set noexpandtab ts=4 sts=4 sw=4
@@ -100,14 +107,10 @@ autocmd FileType bash,c,cpp,java,javascript,perl,sh set noexpandtab ts=4 sts=4 s
 autocmd FileType php,python set expandtab sw=4 sts=4 ts=4
 
 "[2 space soft tab]
-autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd FileType css,eruby,html,ruby,sass,scss,xml,yaml,haml,coffee set expandtab ts=2 sts=2 sw=2 
 
 "Strip whitespace
 autocmd FileType bash,c,cpp,java,javascript,perl,sh,php,python,css,eruby,html,ruby,sass,scss,xml,yaml autocmd BufWritePre <buffer> :%s/\s\+$//e
-
-"pathogen
-call pathogen#infect()
 
 "netrw
 let g:netrw_alto=1
@@ -126,18 +129,20 @@ let g:ctrlp_switch_buffer = 0
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = {
-	\ 'dir': '\.git$\|\.hg$\|\.svn$\|\log$',
+	\ 'dir': '\.git$\|\.hg$\|\.svn$\|\log$\|\tmp$',
 	\ 'file': '\.exe$\|\.so$\|\.dll$',
 	\ }
 
 "Leader mappings
-nnoremap <leader>b :TagbarToggle<cr>
 nnoremap <leader>e :Ex<cr>
-nnoremap <leader>m :CtrlPMRU<cr>
+nnoremap <leader>g :Gblame<cr>
 nnoremap <leader>p :CtrlP<cr>
-nnoremap <leader>t :CtrlPTag<cr>
 nnoremap <leader>q :copen<cr>
+nnoremap <leader>r :CtrlPMRU<cr>
+nnoremap <leader>t :CtrlPTag<cr>
 
 "%% auto expands to the path of the current folder
 cnoremap <expr> %% getcmdtype() == ":" ? expand('%:h').'/' : '%%'
 
+"markdown
+let g:markdown_fenced_languages = ['bash=sh', 'html', 'java', 'javascript', 'python', 'ruby']
