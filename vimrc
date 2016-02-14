@@ -1,4 +1,4 @@
-  " .vimrc
+" .vimrc
 " David Hwang
 
 "pathogen
@@ -97,9 +97,6 @@ highlight ColorColumn ctermbg=darkgrey
 "file-extension
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-"[Normal tabbing]
-autocmd FileType human,mail,ghmarkdown set formatoptions+=t ts=8 sw=8 noexpandtab
-
 "[4 space hard tab]
 autocmd FileType bash,c,cpp,java,javascript,perl,sh set noexpandtab ts=4 sts=4 sw=4
 
@@ -107,10 +104,10 @@ autocmd FileType bash,c,cpp,java,javascript,perl,sh set noexpandtab ts=4 sts=4 s
 autocmd FileType php,python set expandtab sw=4 sts=4 ts=4
 
 "[2 space soft tab]
-autocmd FileType css,eruby,html,ruby,sass,scss,xml,yaml,haml,coffee set expandtab ts=2 sts=2 sw=2 
+autocmd FileType css,eruby,html,ruby,sass,scss,xml,yaml,haml,coffee set expandtab ts=2 sts=2 sw=2
 
 "Strip whitespace
-autocmd FileType bash,c,cpp,java,javascript,perl,sh,php,python,css,eruby,html,ruby,sass,scss,xml,yaml autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType bash,c,cpp,java,javascript,perl,sh,php,python,css,eruby,html,ruby,sass,scss,vim,xml,yaml autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 "netrw
 let g:netrw_alto=1
@@ -118,9 +115,9 @@ let g:netrw_altv=1
 let g:netrw_liststyle=3
 
 "CtrlP
-"Key map CtrlP to ctrl-p 
+"Key map CtrlP to ctrl-p
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
-                          \ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
+			\ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_by_filename = 0
 let g:ctrlp_regexp = 1
@@ -129,9 +126,19 @@ let g:ctrlp_switch_buffer = 0
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = {
-	\ 'dir': '\.git$\|\.hg$\|\.svn$\|\log$\|\tmp$',
-	\ 'file': '\.exe$\|\.so$\|\.dll$',
-	\ }
+			\ 'dir': '\.git$\|\.hg$\|\.svn$\|\log$\|\tmp$',
+			\ 'file': '\.exe$\|\.so$\|\.dll$',
+			\ }
+
+"syntastic - these were beginner recommended settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 "Leader mappings
 nnoremap <leader>e :Vex<cr>
