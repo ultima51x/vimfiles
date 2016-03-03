@@ -72,7 +72,10 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*\\tmp\\*,*.exe
 set wildmode=list:longest,full  "command line completion
 
 """""""""""""""""""" FILE EXTENSIONS """""""""""""""""""""""""""""""""""""""""""
+" markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" ruby
+autocmd BufNewFile,BufReadPost *.jbuilder set filetype=ruby
 
 """""""""""""""""""" LANGUAGE SPECIFIC TAB BEHAVIOR """"""""""""""""""""""""""""
 function! StripTrailingWhiteSpace()
@@ -80,33 +83,18 @@ function! StripTrailingWhiteSpace()
 endfunction
 
 " 4 space hard tab
-autocmd FileType bash,c,cpp,java,javascript,perl,sh setlocal noexpandtab ts=4 sts=4 sw=4
-autocmd FileType bash,c,cpp,java,javascript,perl,sh call StripTrailingWhiteSpace()
+autocmd FileType bash,c,cpp,java,perl,sh setlocal noexpandtab ts=4 sts=4 sw=4
+autocmd FileType bash,c,cpp,java,perl,sh call StripTrailingWhiteSpace()
 
 " 4 space soft tab
-autocmd FileType markdown,php,python setlocal expandtab sw=4 sts=4 ts=4
-autocmd FileType markdown,php,python call StripTrailingWhiteSpace()
+autocmd FileType php,python setlocal expandtab sw=4 sts=4 ts=4
+autocmd FileType php,python call StripTrailingWhiteSpace()
 
 " 2 space soft tab
-autocmd FileType css,eruby,haml,html,ruby,sass,scss,xml,yaml setlocal expandtab ts=2 sts=2 sw=2
-autocmd FileType css,eruby,haml,html,ruby,sass,scss,xml,yaml call StripTrailingWhiteSpace()
+autocmd FileType css,eruby,haml,html,javascript,markdown,ruby,sass,scss,xml,yaml setlocal expandtab ts=2 sts=2 sw=2
+autocmd FileType css,eruby,haml,html,javascript,markdown,ruby,sass,scss,xml,yaml call StripTrailingWhiteSpace()
 
 """""""""""""""""""" PLUGINS """""""""""""""""""""""""""""""""""""""""""""""""""
-"CtrlP
-let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
-			\ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_by_filename = 0
-let g:ctrlp_regexp = 1
-let g:ctrlp_match_window = 'max:20'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = {
-			\ 'dir': '\.git$\|\.hg$\|\.svn$\|\log$\|\tmp$',
-			\ 'file': '\.exe$\|\.so$\|\.dll$',
-			\ }
-
 "markdown
 let g:markdown_fenced_languages = ['bash=sh', 'html', 'java', 'javascript', 'python', 'ruby']
 
@@ -116,16 +104,11 @@ let g:netrw_altv=1
 let g:netrw_liststyle=3
 
 """""""""""""""""""" LEADER """"""""""""""""""""""""""""""""""""""""""""""""""""
-"nnoremap <leader>e :Vex<cr>
 nnoremap <leader>g :Gblame<cr>
-"nnoremap <leader>p :CtrlP<cr>
-"nnoremap <leader>q :copen<cr>
-"nnoremap <leader>r :CtrlPMRU<cr>
-"nnoremap <leader>t :CtrlPTag<cr>
 
 """""""""""""""""""" UNITE """""""""""""""""""""""""""""""""""""""""""""""""""""
 call unite#custom#profile('default', 'context', {
-\   'winheight': 10,
+\   'winheight': 20,
 \ })
 
 "file fuzzy search (like ctrlp)
