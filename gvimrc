@@ -1,14 +1,9 @@
 " .gvimrc
 " David Hwang
 
-" using the colorscheme I like
-colorscheme wombat
-
 " Remove toolbar
 set guioptions-=T	" remove toolbar
 set visualbell t_vb=	" avoid the visual bell
-
-
 
 " make the color column grey in guivim
 highlight ColorColumn guibg=darkgrey

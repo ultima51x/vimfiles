@@ -47,6 +47,7 @@ filetype indent on
 filetype plugin on
 
 highlight ColorColumn ctermbg=darkgrey
+colorscheme wombat
 
 """""""""""""""""""" SETTINGS """"""""""""""""""""""""""""""""""""""""""""""""""
 set backspace=indent,eol,start	"allows backspace over indents/eol
@@ -105,6 +106,9 @@ let g:netrw_liststyle=3
 
 """""""""""""""""""" LEADER """"""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>g :Gblame<cr>
+
+""""""""""""""""""""" AIRLINE """"""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_theme='light'
 
 """""""""""""""""""" UNITE """""""""""""""""""""""""""""""""""""""""""""""""""""
 call unite#custom#profile('default', 'context', {
