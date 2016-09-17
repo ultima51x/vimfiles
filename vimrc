@@ -77,6 +77,7 @@ set wildmode=list:longest,full  "command line completion
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " ruby
 autocmd BufNewFile,BufReadPost *.jbuilder set filetype=ruby
+autocmd BufNewFile,BufReadPost *.axlsx set filetype=ruby
 
 """""""""""""""""""" LANGUAGE SPECIFIC TAB BEHAVIOR """"""""""""""""""""""""""""
 function! StripTrailingWhiteSpace()
