@@ -61,6 +61,7 @@ set incsearch   		"search as you type
 set laststatus=2 		"always show status line (needed for airline)
 set mouse=a     		"enable mouse for all modes
 set nobackup			"no backups
+set noundofile			"no undofile
 set noerrorbells vb t_vb=	"no errorbells
 set number
 set ruler       		"show line status at bottom
@@ -85,16 +86,16 @@ function! StripTrailingWhiteSpace()
 endfunction
 
 " 4 space hard tab
-autocmd FileType bash,c,cpp,java,perl,sh setlocal noexpandtab ts=4 sts=4 sw=4
-autocmd FileType bash,c,cpp,java,perl,sh call StripTrailingWhiteSpace()
+autocmd FileType bash,c,cpp,java,perl,sh,xml setlocal noexpandtab ts=4 sts=4 sw=4
+autocmd FileType bash,c,cpp,java,perl,sh,xml call StripTrailingWhiteSpace()
 
 " 4 space soft tab
 autocmd FileType php,python setlocal expandtab sw=4 sts=4 ts=4
 autocmd FileType php,python call StripTrailingWhiteSpace()
 
 " 2 space soft tab
-autocmd FileType css,eruby,haml,html,javascript,markdown,ruby,sass,scss,xml,yaml setlocal expandtab ts=2 sts=2 sw=2
-autocmd FileType css,eruby,haml,html,javascript,markdown,ruby,sass,scss,xml,yaml call StripTrailingWhiteSpace()
+autocmd FileType css,eruby,haml,html,javascript,markdown,ruby,sass,scss,yaml setlocal expandtab ts=2 sts=2 sw=2
+autocmd FileType css,eruby,haml,html,javascript,markdown,ruby,sass,scss,yaml call StripTrailingWhiteSpace()
 
 """""""""""""""""""" PLUGINS """""""""""""""""""""""""""""""""""""""""""""""""""
 "markdown
