@@ -1,36 +1,3 @@
-[submodule "bundle/vim-endwise"]
-	path = bundle/vim-endwise
-	url = git://github.com/tpope/vim-endwise.git
-[submodule "bundle/vim-commentary"]
-	path = bundle/vim-commentary
-	url = git://github.com/tpope/vim-commentary.git
-[submodule "bundle/vim-fugitive"]
-	path = bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule "bundle/syntastic"]
-	path = bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
-[submodule "bundle/vim-airline"]
-	path = bundle/vim-airline
-	url = https://github.com/vim-airline/vim-airline.git
-[submodule "bundle/vim-airline-themes"]
-	path = bundle/vim-airline-themes
-	url = https://github.com/vim-airline/vim-airline-themes.git
-[submodule "bundle/unite.vim"]
-	path = bundle/unite.vim
-	url = https://github.com/Shougo/unite.vim.git
-[submodule "bundle/vimproc.vim"]
-	path = bundle/vimproc.vim
-	url = https://github.com/Shougo/vimproc.vim.git
-[submodule "bundle/unite-tag"]
-	path = bundle/unite-tag
-	url = https://github.com/tsukkee/unite-tag.git
-[submodule "bundle/neomru.vim"]
-	path = bundle/neomru.vim
-	url = https://github.com/Shougo/neomru.vim.git
-[submodule "bundle/vim-javascript"]
-	path = bundle/vim-javascript
-	url = https://github.com/pangloss/vim-javascript.git
-[submodule "bundle/vim-jsx"]
-	path = bundle/vim-jsx
-	url = https://github.com/mxw/vim-jsx.git
+[submodule "bundle/Vundle.vim"]
+	path = bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git

@@ -36,11 +36,34 @@ if has('syntax') && (&t_Co > 2)
 	syntax on
 endif
 
+"""""""""""""""""""" VUNDLE """"""""""""""""""""""""""""""""""""""""""""""""""""
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/syntastic'
+
+" ui related
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" unite related
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/neomru.vim'
+Plugin 'tsukkee/unite-tag'
+
+" syntax related
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
+call vundle#end()
+
 """""""""""""""""""" COMMANDS """"""""""""""""""""""""""""""""""""""""""""""""""
 "%% auto expands to the path of the current folder
 cnoremap <expr> %% getcmdtype() == ":" ? expand('%:h').'/' : '%%'
-
-execute pathogen#infect()
 
 filetype on     "recognize filetype
 filetype indent on
