@@ -58,6 +58,7 @@ Plugin 'tsukkee/unite-tag'
 " syntax related
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'kchmck/vim-coffee-script'
 
 call vundle#end()
 
@@ -102,6 +103,8 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " ruby
 autocmd BufNewFile,BufReadPost *.jbuilder set filetype=ruby
 autocmd BufNewFile,BufReadPost *.axlsx set filetype=ruby
+" coffee
+autocmd BufNewFile,BufReadPost *.coffee set filetype=coffee
 
 """""""""""""""""""" LANGUAGE SPECIFIC TAB BEHAVIOR """"""""""""""""""""""""""""
 function! StripTrailingWhiteSpace()
@@ -117,8 +120,8 @@ autocmd FileType php,python setlocal expandtab sw=4 sts=4 ts=4
 autocmd FileType php,python call StripTrailingWhiteSpace()
 
 " 2 space soft tab
-autocmd FileType css,eruby,haml,html,javascript,markdown,ruby,sass,scss,yaml setlocal expandtab ts=2 sts=2 sw=2
-autocmd FileType css,eruby,haml,html,javascript,markdown,ruby,sass,scss,yaml call StripTrailingWhiteSpace()
+autocmd FileType css,eruby,haml,html,javascript,markdown,ruby,sass,scss,yaml,coffee setlocal expandtab ts=2 sts=2 sw=2
+autocmd FileType css,eruby,haml,html,javascript,markdown,ruby,sass,scss,yaml,coffee call StripTrailingWhiteSpace()
 
 """""""""""""""""""" PLUGINS """""""""""""""""""""""""""""""""""""""""""""""""""
 "markdown
