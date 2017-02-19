@@ -44,6 +44,7 @@ Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
+Plugin 'Valloric/YouCompleteMe'
 
 " ui related
 Plugin 'vim-airline/vim-airline'
@@ -53,6 +54,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/neomru.vim'
+Plugin 'Shougo/vimfiler.vim'
 Plugin 'tsukkee/unite-tag'
 
 " syntax related
@@ -143,6 +145,11 @@ call unite#custom#profile('default', 'context', {
 \   'winheight': 20,
 \ })
 
+"""
+" All the below are Unite commands
+" \ is to create a new window?
+" \\ is to replace the current window
+
 "file fuzzy search (like ctrlp)
 call unite#custom#source('file_rec,file_rec/async', 'matchers', 'matcher_fuzzy')
 call unite#custom#source('file_rec,file_rec/async', 'sorters', 'sorter_rank')
@@ -158,8 +165,9 @@ nnoremap <leader>f :Unite -auto-preview grep:.<cr>
 nnoremap <leader><leader>f :Unite -no-split -auto-preview grep:.<cr>
 
 "file
-nnoremap <leader>e :Unite file<cr>
-nnoremap <leader><leader>e :Unite -no-split file<cr>
+"" in VimFiler, o is open
+nnoremap <leader>e :VimFiler -explorer -status<cr>
+nnoremap <leader><leader>e :VimFiler -status<cr>
 
 "buffer
 nnoremap <leader>b :Unite buffer<cr>
