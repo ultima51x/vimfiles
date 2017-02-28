@@ -61,6 +61,7 @@ Plugin 'tsukkee/unite-tag'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 
