@@ -139,6 +139,7 @@ nnoremap <leader>g :Gblame<cr>
 
 """"""""""""""""""""" AIRLINE """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_theme='light'
+let g:airline#extensions#tabline#enabled = 1
 
 """""""""""""""""""" UNITE """""""""""""""""""""""""""""""""""""""""""""""""""""
 call unite#custom#profile('default', 'context', {
