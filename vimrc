@@ -44,7 +44,6 @@ Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
-Plugin 'Valloric/YouCompleteMe'
 
 " ui related
 Plugin 'vim-airline/vim-airline'
@@ -53,7 +52,6 @@ Plugin 'vim-airline/vim-airline-themes'
 " unite related
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/neomru.vim'
 Plugin 'Shougo/vimfiler.vim'
 Plugin 'tsukkee/unite-tag'
 
@@ -141,6 +139,8 @@ nnoremap <leader>g :Gblame<cr>
 """"""""""""""""""""" AIRLINE """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_theme='light'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0  " don't show buffers if tabbed
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 """""""""""""""""""" UNITE """""""""""""""""""""""""""""""""""""""""""""""""""""
 call unite#custom#profile('default', 'context', {
@@ -172,8 +172,8 @@ nnoremap <leader>e :VimFiler -explorer -status<cr>
 nnoremap <leader><leader>e :VimFiler -status<cr>
 
 "buffer
-nnoremap <leader>b :Unite buffer<cr>
-nnoremap <leader><leader>b :Unite -no-split buffer<cr>
+nnoremap <leader>b :Unite -prompt=>> -start-insert buffer<cr>
+nnoremap <leader><leader>b :Unite -prompt=>> -start-insert -no-split buffer<cr>
 
 "ctags
 let g:unite_source_tag_max_fname_length = 60
@@ -181,10 +181,6 @@ let g:unite_source_tag_show_kind = 0
 let g:unite_source_tag_strict_truncate_string = 0
 noremap <leader>t :Unite -prompt=>> -start-insert tag<cr>
 nnoremap <leader><leader>t :Unite -no-split -prompt=>> -start-insert tag<cr>
-
-"mru
-nnoremap <leader>m :Unite file_mru<cr>
-nnoremap <leader><leader>m :Unite -no-split file_mru<cr>
 
 autocmd FileType unite call s:unite_settings()
 function! s:unite_settings()
