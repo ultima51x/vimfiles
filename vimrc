@@ -63,7 +63,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'kchmck/vim-coffee-script'
 Plug 'fatih/vim-go'
-Plug 'slim-template/vim-slim.git'
+Plug 'slim-template/vim-slim'
 
 call plug#end()
 
