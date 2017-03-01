@@ -60,6 +60,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'fatih/vim-go'
+Plugin 'slim-template/vim-slim.git'
 
 call vundle#end()
 
@@ -121,8 +122,8 @@ autocmd FileType php,python setlocal expandtab sw=4 sts=4 ts=4
 autocmd FileType php,python call StripTrailingWhiteSpace()
 
 " 2 space soft tab
-autocmd FileType css,eruby,haml,html,javascript,markdown,ruby,sass,scss,yaml,coffee setlocal expandtab ts=2 sts=2 sw=2
-autocmd FileType css,eruby,haml,html,javascript,markdown,ruby,sass,scss,yaml,coffee call StripTrailingWhiteSpace()
+autocmd FileType coffee,css,eruby,haml,html,javascript,markdown,ruby,sass,scss,slim,yaml setlocal expandtab ts=2 sts=2 sw=2
+autocmd FileType coffee,css,eruby,haml,html,javascript,markdown,ruby,sass,scss,slim,yaml call StripTrailingWhiteSpace()
 
 """""""""""""""""""" PLUGINS """""""""""""""""""""""""""""""""""""""""""""""""""
 "markdown
