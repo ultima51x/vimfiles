@@ -43,7 +43,6 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
-Plug 'junegunn/fzf.vim'
 
 " ui related
 Plug 'vim-airline/vim-airline'
