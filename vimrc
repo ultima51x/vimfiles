@@ -52,7 +52,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim'
 Plug 'Shougo/vimfiler.vim'
-Plug 'tsukkee/unite-tag'
+"Plug 'tsukkee/unite-tag'
 
 " fzf
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -147,9 +147,9 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#buffer_nr_format = '%s:'
 
 """""""""""""""""""" UNITE """""""""""""""""""""""""""""""""""""""""""""""""""""
-call unite#custom#profile('default', 'context', {
-\   'winheight': 20,
-\ })
+"call unite#custom#profile('default', 'context', {
+"\   'winheight': 20,
+"\ })
 
 """
 " All the below are Unite commands
@@ -157,49 +157,55 @@ call unite#custom#profile('default', 'context', {
 " \\ is to replace the current window
 
 "file fuzzy search (like ctrlp)
-call unite#custom#source('file_rec,file_rec/async', 'matchers', 'matcher_fuzzy')
-call unite#custom#source('file_rec,file_rec/async', 'sorters', 'sorter_rank')
-let g:unite_source_rec_async_command =
-\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', '']
-nnoremap <leader>p :Unite -prompt=>> -start-insert file_rec/async:!<cr>
-nnoremap <leader><leader>p :Unite -no-split -prompt=>> -start-insert file_rec/async:!<cr>
+"call unite#custom#source('file_rec,file_rec/async', 'matchers', 'matcher_fuzzy')
+"call unite#custom#source('file_rec,file_rec/async', 'sorters', 'sorter_rank')
+"let g:unite_source_rec_async_command =
+"\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', '']
+"nnoremap <leader>p :Unite -prompt=>> -start-insert file_rec/async:!<cr>
+"nnoremap <leader><leader>p :Unite -no-split -prompt=>> -start-insert file_rec/async:!<cr>
 
 "grep
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts = '-i --vimgrep'
-nnoremap <leader>f :Unite -auto-preview grep:.<cr>
-nnoremap <leader><leader>f :Unite -no-split -auto-preview grep:.<cr>
+"let g:unite_source_grep_command = 'ag'
+"let g:unite_source_grep_default_opts = '-i --vimgrep'
+"nnoremap <leader>f :Unite -auto-preview grep:.<cr>
+"nnoremap <leader><leader>f :Unite -no-split -auto-preview grep:.<cr>
 
 "file
-"" in VimFiler, o is open
-nnoremap <leader>e :VimFiler -explorer -status<cr>
-nnoremap <leader><leader>e :VimFiler -status<cr>
+" in VimFiler, o is open
+"nnoremap <leader>e :VimFiler -explorer -status<cr>
+"nnoremap <leader><leader>e :VimFiler -status<cr>
 
 "buffer
-nnoremap <leader>b :Unite -prompt=>> -start-insert buffer<cr>
-nnoremap <leader><leader>b :Unite -prompt=>> -start-insert -no-split buffer<cr>
+"nnoremap <leader>b :Unite -prompt=>> -start-insert buffer<cr>
+"nnoremap <leader><leader>b :Unite -prompt=>> -start-insert -no-split buffer<cr>
 
 "ctags
-let g:unite_source_tag_max_fname_length = 60
-let g:unite_source_tag_show_kind = 0
-let g:unite_source_tag_strict_truncate_string = 0
-noremap <leader>t :Unite -prompt=>> -start-insert tag<cr>
-nnoremap <leader><leader>t :Unite -no-split -prompt=>> -start-insert tag<cr>
+"let g:unite_source_tag_max_fname_length = 60
+"let g:unite_source_tag_show_kind = 0
+"let g:unite_source_tag_strict_truncate_string = 0
+"noremap <leader>t :Unite -prompt=>> -start-insert tag<cr>
+"nnoremap <leader><leader>t :Unite -no-split -prompt=>> -start-insert tag<cr>
 
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-	" exit with esc
-	nmap <buffer> <ESC> <Plug>(unite_exit)
-	imap <buffer> <ESC> <Plug>(unite_exit)
+"autocmd FileType unite call s:unite_settings()
+"function! s:unite_settings()
+"	" exit with esc
+"	nmap <buffer> <ESC> <Plug>(unite_exit)
+"	imap <buffer> <ESC> <Plug>(unite_exit)
+"
+"	" refresh unite
+"	nmap <buffer> <C-r> <Plug>(unite_redraw)
+"	imap <buffer> <C-r> <Plug>(unite_redraw)
+"
+"	" split control
+"	inoremap <silent><buffer><expr> <C-s> unite#do_action('split')
+"	nnoremap <silent><buffer><expr> <C-s> unite#do_action('split')
+"	inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+"	nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+"endfunction
 
-	" refresh unite
-	nmap <buffer> <C-r> <Plug>(unite_redraw)
-	imap <buffer> <C-r> <Plug>(unite_redraw)
 
-	" split control
-	inoremap <silent><buffer><expr> <C-s> unite#do_action('split')
-	nnoremap <silent><buffer><expr> <C-s> unite#do_action('split')
-	inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-	nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-endfunction
-
+"""""""""""""""""""" FZF """""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>p :FZF<cr>
+nnoremap <leader>f :Ag<space>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>t :Tags<cr>
