@@ -37,32 +37,35 @@ if has('syntax') && (&t_Co > 2)
 endif
 
 """""""""""""""""""" VUNDLE """"""""""""""""""""""""""""""""""""""""""""""""""""
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/syntastic'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/syntastic'
+Plug 'junegunn/fzf.vim'
 
 " ui related
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " unite related
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/vimfiler.vim'
-Plugin 'tsukkee/unite-tag'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimproc.vim'
+Plug 'Shougo/vimfiler.vim'
+Plug 'tsukkee/unite-tag'
+
+" fzf
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
 " syntax related
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'fatih/vim-go'
-Plugin 'slim-template/vim-slim.git'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'kchmck/vim-coffee-script'
+Plug 'fatih/vim-go'
+Plug 'slim-template/vim-slim.git'
 
-call vundle#end()
+call plug#end()
 
 """""""""""""""""""" COMMANDS """"""""""""""""""""""""""""""""""""""""""""""""""
 "%% auto expands to the path of the current folder
@@ -142,6 +145,7 @@ let g:airline_theme='light'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0  " don't show buffers if tabbed
 let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#buffer_nr_format = '%s:'
 
 """""""""""""""""""" UNITE """""""""""""""""""""""""""""""""""""""""""""""""""""
 call unite#custom#profile('default', 'context', {
