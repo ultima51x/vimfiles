@@ -47,6 +47,7 @@ Plug 'scrooloose/syntastic'
 " ui related
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'sheerun/vim-wombat-scheme'
 
 " unite related
 Plug 'Shougo/unite.vim'
