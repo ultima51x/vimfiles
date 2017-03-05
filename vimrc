@@ -53,7 +53,6 @@ Plug 'sheerun/vim-wombat-scheme'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim'
 Plug 'Shougo/vimfiler.vim'
-"Plug 'tsukkee/unite-tag'
 
 " fzf
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -64,6 +63,7 @@ Plug 'mxw/vim-jsx'
 Plug 'kchmck/vim-coffee-script'
 Plug 'fatih/vim-go'
 Plug 'slim-template/vim-slim'
+Plug 'tpope/vim-haml'
 
 call plug#end()
 
